@@ -1,8 +1,10 @@
+import 'dart:math';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'hello_world_provider.g.dart';
 
 @riverpod
 String helloWorld(HelloWorldRef ref) {
-  return 'Hello World';
+  return 'Hello World ${Random().nextInt(100)}';
 }

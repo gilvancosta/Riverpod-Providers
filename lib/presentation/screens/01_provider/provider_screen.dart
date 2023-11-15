@@ -1,15 +1,18 @@
+// ignore_for_file: avoid_print
+
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../providers/hello_world_provider.dart';
+import 'providers/hello_world_provider.dart';
 
 class ProviderScreen extends ConsumerWidget {
   const ProviderScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String helloWorld = ref.watch(helloWorldProvider);
-
+    print('ProviderScreen build!!! ${Random().nextInt(100)}');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Provider'),
@@ -17,18 +20,21 @@ class ProviderScreen extends ConsumerWidget {
       body: Center(
         child: Column(
           children: [
-            Text(helloWorld),
+            Consumer(builder: (context, refLocal, _) {
+              final String helloWorld = ref.watch(helloWorldProvider);
+              return Text('Mensagem: $helloWorld');
+            }),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 ref.refresh(helloWorldProvider);
+                print('who:');
               },
               child: const Text('Refresh'),
             ),
           ],
         ),
       ),
-      
     );
   }
 }
