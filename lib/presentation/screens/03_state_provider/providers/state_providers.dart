@@ -12,10 +12,7 @@ class Counter extends _$Counter {
   void increaseByOne() {
     state++;
   }
-
-
 }
-
 
 //DarkMode
 
@@ -26,5 +23,15 @@ class DarkMode extends _$DarkMode {
 
   void toggleDarkMode() {
     state = !state;
+  }
+}
+
+@riverpod
+class UserName extends _$UserName {
+  @override
+  build() => 'melissa Flores';
+
+  void changeName(String name) {
+    state = name;
   }
 }
