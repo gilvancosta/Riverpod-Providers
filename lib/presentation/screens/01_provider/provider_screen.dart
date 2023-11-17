@@ -21,14 +21,16 @@ class ProviderScreen extends ConsumerWidget {
         child: Column(
           children: [
             Consumer(builder: (context, refLocal, _) {
-              final String helloWorld = ref.watch(helloWorldProvider);
-              return Text('Mensagem: $helloWorld');
+              final String helloWorld = refLocal.watch(helloWorldProvider);
+              return Text('Mensagem: $helloWorld',
+                  style: const TextStyle(fontSize: 25));
             }),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 ref.refresh(helloWorldProvider);
-                print('who:');
+
+                // print('who:');
               },
               child: const Text('Refresh'),
             ),
