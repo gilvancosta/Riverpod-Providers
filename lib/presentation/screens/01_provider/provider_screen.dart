@@ -29,8 +29,6 @@ class ProviderScreen extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 ref.refresh(helloWorldProvider);
-
-                // print('who:');
               },
               child: const Text('Refresh'),
             ),

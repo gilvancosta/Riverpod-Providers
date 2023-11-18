@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_app/presentation/screens/screens.dart';
@@ -6,6 +8,11 @@ part 'app_router.g.dart';
 
 @riverpod
 GoRouter appRouter(AppRouterRef ref) {
+  print('appRouter!!!!');
+  ref.onDispose(() {
+    print('Estamos a punto de eliminar este provider');
+  });
+
   return GoRouter(routes: [
     GoRoute(
       path: '/',

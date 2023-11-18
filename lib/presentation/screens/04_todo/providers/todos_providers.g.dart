@@ -23,12 +23,12 @@ final filteredTodosProvider = AutoDisposeProvider<List<Todo>>.internal(
 );
 
 typedef FilteredTodosRef = AutoDisposeProviderRef<List<Todo>>;
-String _$todoCurrentFilterHash() => r'82c97d5d7b9fd5140b890246df3b1ac733781c25';
+String _$todoCurrentFilterHash() => r'55a4f0b51ead0a6d195cc84cf4217f70c68cfe64';
 
 /// See also [TodoCurrentFilter].
 @ProviderFor(TodoCurrentFilter)
 final todoCurrentFilterProvider =
-    AutoDisposeNotifierProvider<TodoCurrentFilter, FilterType>.internal(
+    NotifierProvider<TodoCurrentFilter, FilterType>.internal(
   TodoCurrentFilter.new,
   name: r'todoCurrentFilterProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -38,12 +38,12 @@ final todoCurrentFilterProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$TodoCurrentFilter = AutoDisposeNotifier<FilterType>;
-String _$todosHash() => r'b860f6616e102442f9f50d48bb3f04447acd86ed';
+typedef _$TodoCurrentFilter = Notifier<FilterType>;
+String _$todosHash() => r'77ce8c1a51a32babfc032304c18c22208ddfafca';
 
 /// See also [Todos].
 @ProviderFor(Todos)
-final todosProvider = AutoDisposeNotifierProvider<Todos, List<Todo>>.internal(
+final todosProvider = NotifierProvider<Todos, List<Todo>>.internal(
   Todos.new,
   name: r'todosProvider',
   debugGetCreateSourceHash:
@@ -52,6 +52,6 @@ final todosProvider = AutoDisposeNotifierProvider<Todos, List<Todo>>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$Todos = AutoDisposeNotifier<List<Todo>>;
+typedef _$Todos = Notifier<List<Todo>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

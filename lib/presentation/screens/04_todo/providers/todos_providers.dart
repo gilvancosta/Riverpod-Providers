@@ -10,7 +10,7 @@ const uuid = Uuid();
 
 enum FilterType { all, completed, pending }
 
-@riverpod
+@Riverpod(keepAlive: true)
 class TodoCurrentFilter extends _$TodoCurrentFilter {
   @override
   FilterType build() => FilterType.all;
@@ -24,51 +24,22 @@ class TodoCurrentFilter extends _$TodoCurrentFilter {
   }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 class Todos extends _$Todos {
   @override
-  List<Todo> build() => [
-        Todo(
-            id: uuid.v4(),
-            description: RandomGenerator.getRandomName(),
-            completedAt: null),
-        Todo(
-            id: uuid.v4(),
-            description: RandomGenerator.getRandomName(),
-            completedAt: DateTime.now()),
-        Todo(
-            id: uuid.v4(),
-            description: RandomGenerator.getRandomName(),
-            completedAt: null),
-        Todo(
-            id: uuid.v4(),
-            description: RandomGenerator.getRandomName(),
-            completedAt: null),
-        Todo(
-            id: uuid.v4(),
-            description: RandomGenerator.getRandomName(),
-            completedAt: DateTime.now()),
-        Todo(
-            id: uuid.v4(),
-            description: RandomGenerator.getRandomName(),
-            completedAt: null),
-        Todo(
-            id: uuid.v4(),
-            description: RandomGenerator.getRandomName(),
-            completedAt: null),
-        Todo(
-            id: uuid.v4(),
-            description: RandomGenerator.getRandomName(),
-            completedAt: DateTime.now()),
-        Todo(
-            id: uuid.v4(),
-            description: RandomGenerator.getRandomName(),
-            completedAt: null),
-        Todo(
-            id: uuid.v4(),
-            description: RandomGenerator.getRandomName(),
-            completedAt: DateTime.now()),
-      ];
+  List<Todo> build() {
+    List<Todo> todosList = [];
+
+    for (int i = 0; i < 10; i++) {
+      final todo = Todo(
+        id: uuid.v4(),
+        description: RandomGenerator.getRandomName(),
+        completedAt: i % 2 == 0 ? DateTime.now() : null,
+      );
+      todosList.add(todo);
+    }
+    return todosList;
+  }
 
   void toggleTodo(String id) {
     state = state.map((todo) {
@@ -87,15 +58,15 @@ class Todos extends _$Todos {
   }
 }
 
-
 ///  filteredTodos // SOLO LECTURA
 @riverpod
 List<Todo> filteredTodos(FilteredTodosRef ref) {
-  
-  final currentFilter = ref.watch( todoCurrentFilterProvider );
-  final todos = ref.watch( todosProvider );
+  final currentFilter = ref.watch(todoCurrentFilterProvider);
+  final todos = ref.watch(todosProvider);
 
-  switch( currentFilter ){
+
+
+  switch (currentFilter) {
     case FilterType.all:
       return todos;
 
@@ -105,6 +76,4 @@ List<Todo> filteredTodos(FilteredTodosRef ref) {
     case FilterType.pending:
       return todos.where((todo) => !todo.done).toList();
   }
-
 }
-
