@@ -16,27 +16,32 @@ class FutureProviderScreen extends ConsumerWidget {
       ),
       body: Center(
           child: pokemonName.when(
-        data: (data) => Text(data),
+        data: (data) => Text(data, style: const TextStyle(fontSize: 30)),
         error: (error, stackTrace) => Text('Error: $error'),
         loading: () => const CircularProgressIndicator(),
       )),
       floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
-            heroTag: 'btn-1',
-            child: const Icon(Icons.refresh),
-            onPressed: () {
-              ref.invalidate(pokemonNameProvider);
-              //  ref.read(pokemonIdProvider.notifier).nextPokemon();
-            },
-          ),
-          const SizedBox(height: 10),
-          FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () {
-              // ref.invalidate(pokemonNameProvider);
-              //   ref.read(pokemonIdProvider.notifier).prevPokemon();
-            },
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              FloatingActionButton(
+                heroTag: 'btn-2',
+                child: const Icon(Icons.add),
+                onPressed: () {
+                  ref.read(pokemonIdProvider.notifier).nextPokemon();
+                },
+              ),
+              const SizedBox(width: 10),
+              FloatingActionButton(
+                heroTag: 'btn-3',
+                child: const Icon(Icons.remove),
+                onPressed: () {
+                  ref.read(pokemonIdProvider.notifier).prevPokemon();
+                },
+              ),
+            ],
           ),
         ],
       ),

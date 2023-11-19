@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_app/config/config.dart';
 
