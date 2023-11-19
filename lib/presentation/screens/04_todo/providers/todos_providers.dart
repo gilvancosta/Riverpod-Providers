@@ -64,8 +64,6 @@ List<Todo> filteredTodos(FilteredTodosRef ref) {
   final currentFilter = ref.watch(todoCurrentFilterProvider);
   final todos = ref.watch(todosProvider);
 
-
-
   switch (currentFilter) {
     case FilterType.all:
       return todos;
@@ -75,5 +73,6 @@ List<Todo> filteredTodos(FilteredTodosRef ref) {
 
     case FilterType.pending:
       return todos.where((todo) => !todo.done).toList();
+  
   }
 }

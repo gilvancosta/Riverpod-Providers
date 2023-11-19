@@ -20,7 +20,7 @@ final darkModeProvider = AutoDisposeNotifierProvider<DarkMode, bool>.internal(
 );
 
 typedef _$DarkMode = AutoDisposeNotifier<bool>;
-String _$counterHash() => r'b43f7c18c5389c537100fd61fa83ba6d1aa0df33';
+String _$counterHash() => r'205d6992bdee495da774d5c8476b1ea1c99732f8';
 
 /// See also [Counter].
 @ProviderFor(Counter)

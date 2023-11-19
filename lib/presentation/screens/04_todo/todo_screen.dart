@@ -16,8 +16,7 @@ class TodoScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          ref
-              .read(todosProvider.notifier)
+          ref.read(todosProvider.notifier)
               .createTodo(RandomGenerator.getRandomName());
         },
       ),
@@ -45,8 +44,7 @@ class _TodoView extends ConsumerWidget {
           segments: const [
             ButtonSegment(value: FilterType.all, icon: Text('Todos')),
             ButtonSegment(value: FilterType.completed, icon: Text('Invitados')),
-            ButtonSegment(
-                value: FilterType.pending, icon: Text('No invitados')),
+            ButtonSegment(value: FilterType.pending, icon: Text('No invitados')),
           ],
           selected: <FilterType>{currentFilter},
           onSelectionChanged: (value) {

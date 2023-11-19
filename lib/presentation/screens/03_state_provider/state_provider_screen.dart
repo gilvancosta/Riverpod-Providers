@@ -36,11 +36,16 @@ class StateProviderScreen extends ConsumerWidget {
               ref.read(darkModeProvider.notifier).toggleDarkMode();
             },
           ),
+          const SizedBox(height: 20),
           Text(userName.toString(), style: const TextStyle(fontSize: 25)),
+          const SizedBox(height: 20),
           TextButton.icon(
             icon: const Icon(Icons.add, size: 50),
             label: Consumer(builder: (context, refLocal, _) {
+
               final counter = refLocal.watch(counterProvider);
+
+
               return Text(counter.toString(),
                   style: const TextStyle(fontSize: 100));
             }),

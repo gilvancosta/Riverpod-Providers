@@ -9,9 +9,6 @@ part 'app_router.g.dart';
 @riverpod
 GoRouter appRouter(AppRouterRef ref) {
   print('appRouter!!!!');
-  ref.onDispose(() {
-    print('Estamos a punto de eliminar este provider');
-  });
 
   return GoRouter(routes: [
     GoRoute(

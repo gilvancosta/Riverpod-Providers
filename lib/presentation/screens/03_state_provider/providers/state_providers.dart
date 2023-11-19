@@ -2,7 +2,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'state_providers.g.dart';
 
-
 @riverpod
 class DarkMode extends _$DarkMode {
   @override
@@ -13,14 +12,10 @@ class DarkMode extends _$DarkMode {
   }
 }
 
-
-
 @Riverpod(keepAlive: true)
 class Counter extends _$Counter {
   @override
-  int build() {
-    return 5;
-  }
+  int build() => 0;
 
   void increaseByOne() {
     state++;
@@ -37,4 +32,3 @@ class UserName extends _$UserName {
     state = name;
   }
 }
-
